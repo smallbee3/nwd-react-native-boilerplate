@@ -1,8 +1,8 @@
 import 'dotenv/config';
 
 export default {
-  name: 'dooboo',
-  displayName: 'dooboo',
+  name: 'nwd',
+  displayName: 'nwd',
   entryPoint: 'index.js',
   packagerOpts: {
     assetExts: ['ttf', 'png'],
