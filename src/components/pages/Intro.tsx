@@ -69,7 +69,7 @@ function Intro(props: Props): React.ReactElement {
           imgLeftSrc={IC_MASK}
           isLoading={isLoggingIn}
           onPress={(): void => onLogin()}
-          text={fbt('Login', 'login')}
+          text={fbt('Sign In', 'sign in')}
         />
         <View style={{ marginTop: 8 }} />
         <Button
