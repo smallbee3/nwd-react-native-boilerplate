@@ -3,7 +3,7 @@ import { NativeModules, Platform } from 'react-native';
 
 import intl from './i18n/fbt/translatedFbts.json';
 
-const DEFAULT_LOCALE = 'en_US';
+const DEFAULT_LOCALE = 'ko_KR';
 
 export const viewerContext = {
   locale: DEFAULT_LOCALE,

@@ -1,12 +1,42 @@
 {
   "fb-locale": "en_US",
   "translations": {
-    "8187f7a32af24a016622027a1aaf7c49": {
+    "f37d58e975a5275267b5c24e627b8ce1": {
       "tokens": [],
       "types": [],
       "translations": [
         {
           "translation": "Sign In",
+          "variations": {}
+        }
+      ]
+    },
+    "9a7e4739034d5b53fac5b08beb16ccaa": {
+      "tokens": [],
+      "types": [],
+      "translations": [
+        {
+          "translation": "Navigate",
+          "variations": {}
+        }
+      ]
+    },
+    "5bc2f60fa6862565c5b6947e0be391d1": {
+      "tokens": [],
+      "types": [],
+      "translations": [
+        {
+          "translation": "Change Theme",
+          "variations": {}
+        }
+      ]
+    },
+    "d045dda0e2a4f8df14e676e3adbcf94d": {
+      "tokens": [],
+      "types": [],
+      "translations": [
+        {
+          "translation": "GO BACK",
           "variations": {}
         }
       ]

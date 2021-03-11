@@ -69,7 +69,7 @@ function Intro(props: Props): React.ReactElement {
           imgLeftSrc={IC_MASK}
           isLoading={isLoggingIn}
           onPress={(): void => onLogin()}
-          text={fbt('Sign In', 'sign in')}
+          text={fbt('로그인', 'sign in')}
         />
         <View style={{ marginTop: 8 }} />
         <Button
@@ -79,13 +79,13 @@ function Intro(props: Props): React.ReactElement {
               param: 'GO BACK',
             })
           }
-          text={fbt('Navigate', 'navigate')}
+          text={fbt('화면 전환', 'navigate')}
         />
         <View style={{ marginTop: 8 }} />
         <Button
           testID="btn-theme"
           onPress={(): void => changeThemeType()}
-          text={fbt('Change Theme', 'change theme')}
+          text={fbt('테마 변경', 'change theme')}
         />
       </ButtonWrapper>
     </Container>
