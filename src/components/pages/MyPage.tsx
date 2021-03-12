@@ -1,13 +1,14 @@
 import { RouteProp } from '@react-navigation/core';
 import { useTheme } from 'dooboo-ui';
 import React from 'react';
+import { Text } from 'react-native';
 import styled from 'styled-components/native';
 
-import {
-  RootStackNavigationProps,
-  RootStackParamList,
-} from '../../components/navigations/RootStackNavigator';
 import { withScreen } from '../../utils/wrapper';
+import {
+  RootTabNavigationProps,
+  RootTabParamList,
+} from '../navigations/RootStackNavigator';
 import Button from '../uis/Button';
 
 const Container = styled.View`
@@ -21,31 +22,34 @@ const Container = styled.View`
 `;
 
 interface Props {
-  navigation: RootStackNavigationProps<'Temp'>;
-  route: RouteProp<RootStackParamList, 'Temp'>;
+  navigation: RootTabNavigationProps<'MyPage'>;
+  route: RouteProp<RootTabParamList, 'MyPage'>;
 }
 
 function Page(props: Props): React.ReactElement {
   const { theme } = useTheme();
 
-  const {
-    route: {
-      params: { param },
-    },
-    navigation,
-  } = props;
+  // const {
+  //   route: {
+  //     params: {param},
+  //   },
+  //   navigation,
+  // } = props;
 
   return (
-    <Container>
-      <Button
+    <>
+      <Text>MyPage</Text>
+      <Container>
+        {/* <Button
         testID="btn-back"
         onPress={(): void => navigation.goBack()}
         text={param}
         style={{
           backgroundColor: theme.text,
         }}
-      />
-    </Container>
+      /> */}
+      </Container>
+    </>
   );
 }
 
