@@ -7,6 +7,8 @@ import { Text } from 'react-native';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components/native';
 
+import FACEBOOK_LOGIN from '../../assets/img/socialmedia/facebook-login.png';
+import GOOGLE_LOGIN from '../../assets/img/socialmedia/google-login.png';
 import { userState } from '../../store/atom';
 import { withScreen } from '../../utils/wrapper';
 import {
@@ -69,12 +71,14 @@ function Page(props: Props): React.ReactElement {
           <View style={{ marginTop: 8 }} />
           <Button
             testID="btn-facebook-login"
+            imgLeftSrc={FACEBOOK_LOGIN}
             text={fbt('페이스북 계정으로 로그인', '')}
             style={{ backgroundColor: '#3B5998' }}
           />
           <View style={{ marginTop: 8 }} />
           <Button
             testID="btn-google-login"
+            imgLeftSrc={GOOGLE_LOGIN}
             text={fbt('구글 계정으로 로그인', '')}
             style={{ backgroundColor: '#fff' }}
           />
