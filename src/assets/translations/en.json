@@ -1,42 +1,52 @@
 {
   "fb-locale": "en_US",
   "translations": {
-    "f37d58e975a5275267b5c24e627b8ce1": {
+    "ec98e1556b3dfd0a00f8e536b441586f": {
       "tokens": [],
       "types": [],
       "translations": [
         {
-          "translation": "Sign In",
+          "translation": "Log in",
           "variations": {}
         }
       ]
     },
-    "9a7e4739034d5b53fac5b08beb16ccaa": {
+    "2fb73271a2abea29f418d0b46cc933e5": {
       "tokens": [],
       "types": [],
       "translations": [
         {
-          "translation": "Navigate",
+          "translation": "Sign in with Facebook",
           "variations": {}
         }
       ]
     },
-    "5bc2f60fa6862565c5b6947e0be391d1": {
+    "c4d976229e40fa65fd06931a87c9986d": {
       "tokens": [],
       "types": [],
       "translations": [
         {
-          "translation": "Change Theme",
+          "translation": "Sign in with Google",
           "variations": {}
         }
       ]
     },
-    "d045dda0e2a4f8df14e676e3adbcf94d": {
+    "ccf0d6052afa848ac2f5ceca9166ba36": {
       "tokens": [],
       "types": [],
       "translations": [
         {
-          "translation": "GO BACK",
+          "translation": "Sign in with Apple",
+          "variations": {}
+        }
+      ]
+    },
+    "627fc218ec7e49741894fc61c1091cf7": {
+      "tokens": [],
+      "types": [],
+      "translations": [
+        {
+          "translation": "Log out",
           "variations": {}
         }
       ]
