@@ -1,15 +1,19 @@
-import type {ActivityIndicatorProps, StyleProp, ViewStyle} from 'react-native';
-
-import {ActivityIndicator} from 'react-native';
-import type {FC} from 'react';
+import type { FC } from 'react';
 import React from 'react';
-import {StyledButton} from '../Styles';
+import type {
+  ActivityIndicatorProps,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
+import { ActivityIndicator } from 'react-native';
 
-type Props = {
+import { StyledButton } from '../Styles';
+
+interface Props {
   style?: StyleProp<ViewStyle>;
   indicatorColor?: ActivityIndicatorProps['color'];
   indicatorSize?: ActivityIndicatorProps['size'];
-};
+}
 
 const ButtonLoading: FC<Props> = ({
   style,

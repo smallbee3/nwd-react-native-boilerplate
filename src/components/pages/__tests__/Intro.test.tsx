@@ -1,11 +1,16 @@
-import React, {ReactElement} from 'react';
-import {RenderAPI, act, fireEvent, render} from '@testing-library/react-native';
-import {createTestElement, createTestProps} from '../../../../test/testUtils';
+import {
+  act,
+  fireEvent,
+  render,
+  RenderAPI,
+} from '@testing-library/react-native';
+import { ThemeType } from 'dooboo-ui';
+import React, { ReactElement } from 'react';
+import renderer from 'react-test-renderer';
 
+import { createTestElement, createTestProps } from '../../../../test/testUtils';
 import ActionButton from '../../uis/Button';
 import Intro from '../Intro';
-import {ThemeType} from 'dooboo-ui';
-import renderer from 'react-test-renderer';
 
 let props: any;
 let component: ReactElement;

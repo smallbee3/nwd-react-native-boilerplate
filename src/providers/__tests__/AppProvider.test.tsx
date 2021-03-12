@@ -1,21 +1,20 @@
-import * as React from 'react';
-
-import {AppProvider, useAppContext} from '../AppProvider';
-import {Button, Text, View} from 'react-native';
 import {
-  RenderResult,
   act,
   fireEvent,
   render,
+  RenderResult,
 } from '@testing-library/react-native';
-
+import * as React from 'react';
+import { Button, Text, View } from 'react-native';
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';
+
+import { AppProvider, useAppContext } from '../AppProvider';
 
 let testingLib: RenderResult;
 
 const FakeChild = (): React.ReactElement => {
-  const {state, resetUser, callDefault} = useAppContext();
+  const { state, resetUser, callDefault } = useAppContext();
 
   return (
     <View>

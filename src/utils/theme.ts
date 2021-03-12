@@ -3,12 +3,12 @@ export enum ThemeType {
   DARK = 'DARK',
 }
 
-export type Colors = {
+export interface Colors {
   success: string;
   darkGray: string;
   mediumGray: string;
   lightGray: string;
-};
+}
 
 export const colors: Colors = {
   success: '#00BA90',

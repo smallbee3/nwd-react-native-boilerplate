@@ -1,6 +1,5 @@
-import {Platform, View} from 'react-native';
-
 import React from 'react';
+import { Platform, View } from 'react-native';
 
 export const withScreen = (WrappedComponent: React.ComponentType<any>) => {
   return (props) => {

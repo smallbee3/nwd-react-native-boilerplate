@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+import React from 'react';
 import type {
   ImageSourcePropType,
   ImageStyle,
@@ -6,13 +8,11 @@ import type {
   TouchableOpacityProps,
   ViewStyle,
 } from 'react-native';
-
-import {Body3} from '../Typography';
-import type {FC} from 'react';
-import React from 'react';
-import {StyledButton} from '../Styles';
-import {TouchableOpacity} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
+
+import { StyledButton } from '../Styles';
+import { Body3 } from '../Typography';
 
 const StyledImage = styled.Image`
   width: 24px;
@@ -22,10 +22,10 @@ const StyledImage = styled.Image`
 `;
 
 const StyledText = styled(Body3)`
-  color: ${({theme}) => theme.textContrast};
+  color: ${({ theme }) => theme.textContrast};
 `;
 
-type Props = {
+interface Props {
   testID?: TouchableOpacityProps['testID'];
   activeOpacity?: TouchableOpacityProps['activeOpacity'];
   onPress?: TouchableOpacityProps['onPress'];
@@ -34,7 +34,7 @@ type Props = {
   style?: ViewStyle;
   textStyle?: TextStyle;
   text?: string;
-};
+}
 
 const Button: FC<Props> = ({
   testID,

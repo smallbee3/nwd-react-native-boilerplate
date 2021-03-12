@@ -1,21 +1,22 @@
-import Button from '../uis/Button';
-import {IC_MASK} from '../../utils/Icons';
-import IntroView from '../uis/IntroTemp';
+import { useTheme } from 'dooboo-ui';
+import { fbt } from 'fbt';
 import React from 'react';
-import {RootStackNavigationProps} from '../navigations/RootStackNavigator';
-import {User} from '../../types';
-import {View} from 'react-native';
-import {fbt} from 'fbt';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
-import {useAppContext} from '../../providers/AppProvider';
-import {useTheme} from 'dooboo-ui';
-import {withScreen} from '../../utils/wrapper';
+
+import { useAppContext } from '../../providers/AppProvider';
+import { User } from '../../types';
+import { IC_MASK } from '../../utils/Icons';
+import { withScreen } from '../../utils/wrapper';
+import { RootStackNavigationProps } from '../navigations/RootStackNavigator';
+import Button from '../uis/Button';
+import IntroView from '../uis/IntroTemp';
 
 const Container = styled.View`
   flex: 1;
   align-self: stretch;
   overflow: scroll;
-  background-color: ${({theme}) => theme.background};
+  background-color: ${({ theme }) => theme.background};
 
   flex-direction: column;
   justify-content: flex-start;
@@ -38,9 +39,9 @@ interface Props {
 function Intro(props: Props): React.ReactElement {
   let timer: number;
 
-  const {setUser} = useAppContext();
+  const { setUser } = useAppContext();
 
-  const {changeThemeType} = useTheme();
+  const { changeThemeType } = useTheme();
   const [isLoggingIn, setIsLoggingIn] = React.useState<boolean>(false);
 
   const onLogin = (): void => {
@@ -70,7 +71,7 @@ function Intro(props: Props): React.ReactElement {
           onPress={(): void => onLogin()}
           text={fbt('Login', 'login')}
         />
-        <View style={{marginTop: 8}} />
+        <View style={{ marginTop: 8 }} />
         <Button
           testID="btn-navigate"
           onPress={(): void =>
@@ -80,7 +81,7 @@ function Intro(props: Props): React.ReactElement {
           }
           text={fbt('Navigate', 'navigate')}
         />
-        <View style={{marginTop: 8}} />
+        <View style={{ marginTop: 8 }} />
         <Button
           testID="btn-theme"
           onPress={(): void => changeThemeType()}

@@ -1,7 +1,8 @@
 import React from 'react';
+
 import RootNavigator from './components/navigations/RootStackNavigator';
 import RootProvider from './providers';
-import {initFbt} from './utils/fbt';
+import { initFbt } from './utils/fbt';
 
 initFbt();
 

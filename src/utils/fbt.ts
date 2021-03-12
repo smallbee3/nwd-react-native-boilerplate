@@ -1,6 +1,6 @@
-import {NativeModules, Platform} from 'react-native';
+import { init } from 'fbt';
+import { NativeModules, Platform } from 'react-native';
 
-import {init} from 'fbt';
 import intl from './i18n/fbt/translatedFbts.json';
 
 const DEFAULT_LOCALE = 'en_US';
@@ -28,7 +28,7 @@ export const initFbt = (): void => {
   init({
     translations: intl,
     hooks: {
-      getViewerContext: (): {locale: string} => viewerContext,
+      getViewerContext: (): { locale: string } => viewerContext,
     },
   });
 };

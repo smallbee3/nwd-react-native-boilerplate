@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {useAppContext} from '../../providers/AppProvider';
+
+import { useAppContext } from '../../providers/AppProvider';
 
 const ContentWrapper = styled.View`
   flex-direction: column;
@@ -13,12 +14,12 @@ const ContentWrapper = styled.View`
 const StyledText = styled.Text`
   font-size: 18px;
   line-height: 27px;
-  color: ${({theme}) => theme.text};
+  color: ${({ theme }) => theme.text};
 `;
 
 function IntroView(): React.ReactElement {
   const {
-    state: {user},
+    state: { user },
   } = useAppContext();
 
   return (

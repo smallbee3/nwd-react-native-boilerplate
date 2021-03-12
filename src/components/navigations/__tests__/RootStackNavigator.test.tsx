@@ -1,11 +1,11 @@
 import 'react-native';
 
-import React, {ReactElement} from 'react';
-import {createTestElement, createTestProps} from '../../../../test/testUtils';
-
-import StackNavigator from '../RootStackNavigator';
-import {ThemeType} from 'dooboo-ui';
+import { ThemeType } from 'dooboo-ui';
+import React, { ReactElement } from 'react';
 import renderer from 'react-test-renderer';
+
+import { createTestElement, createTestProps } from '../../../../test/testUtils';
+import StackNavigator from '../RootStackNavigator';
 
 let props: any;
 let component: ReactElement;
