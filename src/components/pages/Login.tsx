@@ -1,9 +1,13 @@
 import { RouteProp } from '@react-navigation/core';
 import { useTheme } from 'dooboo-ui';
+import { fbt } from 'fbt';
 import React from 'react';
+import { View } from 'react-native';
 import { Text } from 'react-native';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components/native';
 
+import { userState } from '../../store/atom';
 import { withScreen } from '../../utils/wrapper';
 import {
   RootStackNavigationProps,
@@ -46,6 +50,7 @@ function Page(props: Props): React.ReactElement {
   //   navigation,
   // } = props;
   const { navigation } = props;
+  const [, setUser] = useRecoilState(userState);
 
   return (
     <>
@@ -53,20 +58,31 @@ function Page(props: Props): React.ReactElement {
       <Container>
         <ButtonWrapper>
           <Button
-            testID="btn-findPw"
-            onPress={(): void => navigation.navigate('FindPw')}
-            text={'FindPW'}
-            style={{
-              backgroundColor: theme.text,
-            }}
+            testID="btn-login"
+            text={fbt('로그인', '')}
+            onPress={(): void =>
+              setUser({
+                id: '1',
+              })
+            }
           />
+          <View style={{ marginTop: 8 }} />
           <Button
-            testID="btn-SignUp"
-            onPress={(): void => navigation.navigate('SignUp')}
-            text={'SignUp'}
-            style={{
-              backgroundColor: theme.text,
-            }}
+            testID="btn-facebook-login"
+            text={fbt('페이스북 계정으로 로그인', '')}
+            style={{ backgroundColor: '#3B5998' }}
+          />
+          <View style={{ marginTop: 8 }} />
+          <Button
+            testID="btn-google-login"
+            text={fbt('구글 계정으로 로그인', '')}
+            style={{ backgroundColor: '#fff' }}
+          />
+          <View style={{ marginTop: 8 }} />
+          <Button
+            testID="btn-apple-login"
+            text={fbt('애플 계정으로 로그인', '')}
+            style={{ backgroundColor: '#fff' }}
           />
         </ButtonWrapper>
         {/* <Button
