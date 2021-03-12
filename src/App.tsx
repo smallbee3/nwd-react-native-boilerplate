@@ -1,4 +1,5 @@
 import React from 'react';
+import { RecoilRoot } from 'recoil';
 
 import RootNavigator from './components/navigations/RootStackNavigator';
 import RootProvider from './providers';
@@ -13,7 +14,9 @@ function App(): React.ReactElement {
 function ProviderWrapper(): React.ReactElement {
   return (
     <RootProvider>
-      <App />
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
     </RootProvider>
   );
 }
