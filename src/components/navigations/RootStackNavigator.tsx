@@ -8,7 +8,8 @@ import {
   StackNavigationProp,
 } from '@react-navigation/stack';
 import { useTheme } from 'dooboo-ui';
-import React, { useState } from 'react';
+import React from 'react';
+import { useRecoilState } from 'recoil';
 
 export interface RootStackParamList {
   default: undefined;
@@ -18,6 +19,7 @@ export interface RootStackParamList {
   FindPw: undefined;
   SignUp: undefined;
 }
+import { userState } from '../../store/atom';
 import FindPw from '../pages/FindPw';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
@@ -48,7 +50,7 @@ const Tab = createBottomTabNavigator<RootTabParamList>();
 
 function RootNavigator(): React.ReactElement {
   const { theme } = useTheme();
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [user, setUser] = useRecoilState(userState);
 
   return (
     <NavigationContainer
@@ -63,7 +65,7 @@ function RootNavigator(): React.ReactElement {
         },
         dark: true,
       }}>
-      {isLoggedIn ? (
+      {user ? (
         <Tab.Navigator>
           <Tab.Screen name="ConfList" component={ConfList} />
           <Tab.Screen name="EventList" component={EventList} />
