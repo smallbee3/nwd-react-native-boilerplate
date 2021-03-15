@@ -3,11 +3,12 @@ import { useTheme } from 'dooboo-ui';
 import React from 'react';
 import { Text } from 'react-native';
 import styled from 'styled-components/native';
+import { fbt } from 'fbt';
 
 import { withScreen } from '../../utils/wrapper';
 import {
-  RootTabNavigationProps,
-  RootTabParamList,
+  RootStackNavigationProps,
+  RootStackParamList,
 } from '../navigations/RootStackNavigator';
 import Button from '../uis/Button';
 
@@ -22,32 +23,31 @@ const Container = styled.View`
 `;
 
 interface Props {
-  navigation: RootTabNavigationProps<'EventList'>;
-  route: RouteProp<RootTabParamList, 'EventList'>;
+  navigation: RootStackNavigationProps<'ProgramDetail'>;
+  route: RouteProp<RootStackParamList, 'ProgramDetail'>;
 }
 
 function Page(props: Props): React.ReactElement {
   const { theme } = useTheme();
 
-  // const {
-  //   route: {
-  //     params: {param},
-  //   },
-  //   navigation,
-  // } = props;
+  const {
+    // route: {
+    //   params: {param},
+    // },
+    navigation,
+  } = props;
 
   return (
     <>
-      <Text>EventList</Text>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 100 }}>
+        ProgramDetail
+      </Text>
       <Container>
-        {/* <Button
-        testID="btn-back"
-        onPress={(): void => navigation.goBack()}
-        text={param}
-        style={{
-          backgroundColor: theme.text,
-        }}
-      /> */}
+        <Button
+          onPress={(): void => navigation.goBack()}
+          text="Go Back(to ProgramList)"
+          style={{ backgroundColor: '#f5f' }}
+        />
       </Container>
     </>
   );

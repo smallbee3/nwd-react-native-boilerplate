@@ -23,8 +23,8 @@ const Container = styled.View`
 `;
 
 interface Props {
-  navigation: RootStackNavigationProps<'ConfDetail'>;
-  route: RouteProp<RootStackParamList, 'ConfDetail'>;
+  navigation: RootStackNavigationProps<'ProgramList'>;
+  route: RouteProp<RootStackParamList, 'ProgramList'>;
 }
 
 function Page(props: Props): React.ReactElement {
@@ -40,13 +40,13 @@ function Page(props: Props): React.ReactElement {
   return (
     <>
       <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 100 }}>
-        ConfList
+        Program List
       </Text>
       <Container>
         <Button
-          onPress={(): void => navigation.goBack()}
-          text="Go Back(to ConfDetail)"
-          style={{ backgroundColor: '#f5f' }}
+          text="Goto ProgramDetail"
+          style={{ backgroundColor: '#55f' }}
+          onPress={() => navigation.navigate('ProgramDetail')}
         />
       </Container>
     </>

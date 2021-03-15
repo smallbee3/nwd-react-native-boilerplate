@@ -1,12 +1,9 @@
 import { RouteProp } from '@react-navigation/core';
 import { useTheme } from 'dooboo-ui';
-import { fbt } from 'fbt';
 import React from 'react';
 import { Text } from 'react-native';
-import { useRecoilState } from 'recoil';
 import styled from 'styled-components/native';
 
-import { userState } from '../../store/atom';
 import { withScreen } from '../../utils/wrapper';
 import {
   RootTabNavigationProps,
@@ -24,22 +21,13 @@ const Container = styled.View`
   justify-content: center;
 `;
 
-const ButtonWrapper = styled.View`
-  position: absolute;
-  flex-direction: column;
-  bottom: 40px;
-  width: 85%;
-  align-self: center;
-`;
-
 interface Props {
-  navigation: RootTabNavigationProps<'MyPage'>;
-  route: RouteProp<RootTabParamList, 'MyPage'>;
+  navigation: RootTabNavigationProps<'Location'>;
+  route: RouteProp<RootTabParamList, 'Location'>;
 }
 
 function Page(props: Props): React.ReactElement {
   const { theme } = useTheme();
-  const [, setUser] = useRecoilState(userState);
 
   // const {
   //   route: {
@@ -51,19 +39,17 @@ function Page(props: Props): React.ReactElement {
   return (
     <>
       <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 100 }}>
-        MyPage
+        Location
       </Text>
       <Container>
-        <ButtonWrapper>
-          <Button
-            testID="btn-logout"
-            onPress={(): void => setUser(null)}
-            text={fbt('로그아웃', '')}
-            style={{
-              backgroundColor: theme.text,
-            }}
-          />
-        </ButtonWrapper>
+        {/* <Button
+        testID="btn-back"
+        onPress={(): void => navigation.goBack()}
+        text={param}
+        style={{
+          backgroundColor: theme.text,
+        }}
+      /> */}
       </Container>
     </>
   );

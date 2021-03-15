@@ -3,7 +3,6 @@ import { useTheme } from 'dooboo-ui';
 import React from 'react';
 import { Text } from 'react-native';
 import styled from 'styled-components/native';
-import { fbt } from 'fbt';
 
 import { withScreen } from '../../utils/wrapper';
 import {
@@ -23,8 +22,8 @@ const Container = styled.View`
 `;
 
 interface Props {
-  navigation: RootStackNavigationProps<'ConfDetail'>;
-  route: RouteProp<RootStackParamList, 'ConfDetail'>;
+  navigation: RootStackNavigationProps<'ConfPeople'>;
+  route: RouteProp<RootStackParamList, 'ConfPeople'>;
 }
 
 function Page(props: Props): React.ReactElement {
@@ -40,7 +39,7 @@ function Page(props: Props): React.ReactElement {
   return (
     <>
       <Text style={{ fontSize: 20, fontWeight: 'bold', marginTop: 100 }}>
-        ConfList
+        ConfPeople
       </Text>
       <Container>
         <Button
