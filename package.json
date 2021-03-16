@@ -5,7 +5,6 @@
   "private": true,
   "postinstall": "npx jetify",
   "scripts": {
-    "postinstall": "yarn fbt:all",
     "dev": "react-native start",
     "tsc": "tsc",
     "watch": "tsc -w",
