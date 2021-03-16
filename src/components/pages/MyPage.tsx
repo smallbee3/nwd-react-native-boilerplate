@@ -28,7 +28,7 @@ interface Props {
 
 function Page(props: Props): React.ReactElement {
   const { theme } = useTheme();
-  const [, setUser] = useRecoilState(userState);
+  const [user, setUser] = useRecoilState(userState);
   const [visibleLogoutModal, setVisibleLogoutModal] = useState(false);
   const [visibleWithdrawalModal, setVisibleWithdrawalModal] = useState(false);
 
@@ -40,6 +40,11 @@ function Page(props: Props): React.ReactElement {
     setVisibleWithdrawalModal(!visibleWithdrawalModal);
   };
 
+  const logout = () => {
+    // toggleLogoutOverlay();
+    setUser(null);
+  };
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <Overlay
@@ -48,22 +53,23 @@ function Page(props: Props): React.ReactElement {
         onBackdropPress={toggleLogoutOverlay}>
         <View style={styles.overlayContainer}>
           <Text style={styles.overlayTitle}>
-            KAN에서 로그아웃 하시겠습니까?
+            {fbt('KAN에서 로그아웃 하시겠습니까?', '')}
           </Text>
           <Text style={styles.overlayDescription}></Text>
           <View style={styles.overlayButtonBox}>
             <TouchableOpacity
               style={styles.overlayConfirmButton}
-              onPress={() => {
-                setUser(null);
-                toggleLogoutOverlay();
-              }}>
-              <Text style={styles.overlayConfirmButtonText}>확인</Text>
+              onPress={logout}>
+              <Text style={styles.overlayConfirmButtonText}>
+                {fbt('확인', '')}
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.overlayCancelButton}
               onPress={toggleLogoutOverlay}>
-              <Text style={styles.overlayCancelButtonText}>취소</Text>
+              <Text style={styles.overlayCancelButtonText}>
+                {fbt('취소', '')}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -73,18 +79,24 @@ function Page(props: Props): React.ReactElement {
         isVisible={visibleWithdrawalModal}
         onBackdropPress={toggleWithdrawalOverlay}>
         <View style={styles.overlayContainer}>
-          <Text style={styles.overlayTitle}>KAN에서 탈퇴 하시겠습니까?</Text>
+          <Text style={styles.overlayTitle}>
+            {fbt('KAN에서 탈퇴 하시겠습니까?', '')}
+          </Text>
           <Text style={styles.overlayDescription}></Text>
           <View style={styles.overlayButtonBox}>
             <TouchableOpacity
               style={styles.overlayConfirmButton}
               onPress={toggleWithdrawalOverlay}>
-              <Text style={styles.overlayConfirmButtonText}>확인</Text>
+              <Text style={styles.overlayConfirmButtonText}>
+                {fbt('확인', '')}
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.overlayCancelButton}
               onPress={toggleWithdrawalOverlay}>
-              <Text style={styles.overlayCancelButtonText}>취소</Text>
+              <Text style={styles.overlayCancelButtonText}>
+                {fbt('취소', '')}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -117,12 +129,14 @@ function Page(props: Props): React.ReactElement {
               <Image
                 style={styles.profileImage}
                 source={{
-                  uri: 'https://randomuser.me/api/portraits/men/41.jpg',
+                  uri: user?.thumbnail,
                 }}
               />
               <View style={styles.profileTextBox}>
-                <Text style={styles.profileName}>Aasiya Jayavant</Text>
-                <Text style={styles.profileEmail}>oscar@sendia.io</Text>
+                <Text style={styles.profileName}>
+                  {user?.firstName} {user?.familyName}
+                </Text>
+                <Text style={styles.profileEmail}>{user?.email}</Text>
               </View>
             </View>
           </View>
@@ -133,13 +147,15 @@ function Page(props: Props): React.ReactElement {
           <View style={styles.additionalInfoBox}>
             <View style={styles.additionalInfo}>
               <Text style={styles.additionalInfoName}>{fbt('소속', '')}</Text>
-              <Text style={styles.additionalInfoValue}>한국대학교</Text>
+              <Text style={styles.additionalInfoValue}>
+                {user?.organization}
+              </Text>
             </View>
             <View style={styles.additionalInfo}>
               <Text style={styles.additionalInfoName}>
                 {fbt('연구분야', '')}
               </Text>
-              <Text style={styles.additionalInfoValue}>네트워크</Text>
+              <Text style={styles.additionalInfoValue}>{user?.jobTitle}</Text>
             </View>
             <View style={styles.additionalInfo}>
               <Text style={styles.additionalInfoName}>

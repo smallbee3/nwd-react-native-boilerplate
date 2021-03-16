@@ -8,7 +8,10 @@ import {
   StackNavigationProp,
 } from '@react-navigation/stack';
 import { useTheme } from 'dooboo-ui';
+import { fbt } from 'fbt';
 import React from 'react';
+import { Text } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { useRecoilState } from 'recoil';
 
 export interface RootStackParamList {
@@ -118,11 +121,56 @@ function RootNavigator(): React.ReactElement {
       {user ? (
         <Tab.Navigator>
           {/* <Tab.Screen name="ConfList" component={ConfList} /> */}
-          <Tab.Screen name="ConfNavi" component={ConfNavi} />
-          <Tab.Screen name="ProgramNavi" component={ProgramNavi} />
-          <Tab.Screen name="Location" component={Location} />
-          <Tab.Screen name="NewsNavi" component={NewsNavi} />
-          <Tab.Screen name="MyPage" component={MyPage} />
+          <Tab.Screen
+            name="ConfNavi"
+            component={ConfNavi}
+            options={{
+              tabBarLabel: () => <Text>{fbt('홈', '')}</Text>,
+              tabBarIcon: () => (
+                <Icon name="home" type="font-awesome-5" size={14} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="ProgramNavi"
+            component={ProgramNavi}
+            options={{
+              tabBarLabel: () => <Text>{fbt('프로그램', '')}</Text>,
+              tabBarIcon: () => (
+                <Icon name="calendar-alt" type="font-awesome-5" size={14} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Location"
+            component={Location}
+            options={{
+              tabBarLabel: () => <Text>{fbt('위치', '')}</Text>,
+              tabBarIcon: () => (
+                <Icon name="map-marked-alt" type="font-awesome-5" size={14} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="NewsNavi"
+            component={NewsNavi}
+            options={{
+              tabBarLabel: () => <Text>{fbt('공지', '')}</Text>,
+              tabBarIcon: () => (
+                <Icon name="bullhorn" type="font-awesome-5" size={14} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="MyPage"
+            component={MyPage}
+            options={{
+              tabBarLabel: () => <Text>{fbt('더 보기', '')}</Text>,
+              tabBarIcon: () => (
+                <Icon name="ellipsis-h" type="font-awesome-5" size={14} />
+              ),
+            }}
+          />
         </Tab.Navigator>
       ) : (
         <Stack.Navigator

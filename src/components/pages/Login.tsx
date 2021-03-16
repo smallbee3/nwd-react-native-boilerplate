@@ -7,6 +7,7 @@ import { Text } from 'react-native';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components/native';
 
+import { login } from '../../apis';
 import FACEBOOK_LOGIN from '../../assets/img/socialmedia/facebook-login.png';
 import GOOGLE_LOGIN from '../../assets/img/socialmedia/google-login.png';
 import { userState } from '../../store/atom';
@@ -54,6 +55,11 @@ function Page(props: Props): React.ReactElement {
   const { navigation } = props;
   const [, setUser] = useRecoilState(userState);
 
+  const handleLogin = async () => {
+    const result = await login('mk@naver.com', '123456789');
+    setUser(result.user);
+  };
+
   return (
     <>
       <Text>Login</Text>
@@ -62,11 +68,7 @@ function Page(props: Props): React.ReactElement {
           <Button
             testID="btn-login"
             text={fbt('로그인', '')}
-            onPress={(): void =>
-              setUser({
-                id: '1',
-              })
-            }
+            onPress={handleLogin}
           />
           <View style={{ marginTop: 8 }} />
           <Button
