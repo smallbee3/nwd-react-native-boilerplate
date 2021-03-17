@@ -33,19 +33,19 @@ export interface RootStackParamList {
   NewsDetail: undefined;
 }
 import { userState } from '../../store/atom';
-import FindPw from '../pages/FindPw';
-import Login from '../pages/Login';
-import SignUp from '../pages/SignUp';
-import ConfList from '../pages/ConfList';
 import ConfDetail from '../pages/ConfDetail';
 import ConfIntro from '../pages/ConfIntro';
+import ConfList from '../pages/ConfList';
 import ConfPeople from '../pages/ConfPeople';
-import ConfSubmit from '../pages/ConfSubmit';
 import ConfSchedule from '../pages/ConfSchedule';
-import ProgramList from '../pages/ProgramList';
-import ProgramDetail from '../pages/ProgramDetail';
-import NewsList from '../pages/NewsList';
+import ConfSubmit from '../pages/ConfSubmit';
+import FindPw from '../pages/FindPw';
+import Login from '../pages/Login';
 import NewsDetail from '../pages/NewsDetail';
+import NewsList from '../pages/NewsList';
+import ProgramDetail from '../pages/ProgramDetail';
+import ProgramList from '../pages/ProgramList';
+import SignUp from '../pages/SignUp';
 
 export type RootStackNavigationProps<
   T extends keyof RootStackParamList = 'default'
@@ -61,8 +61,8 @@ export interface RootTabParamList {
   NewsNavi: undefined;
   MyPage: undefined;
 }
-import MyPage from '../pages/MyPage';
 import Location from '../pages/Location';
+import MyPage from '../pages/MyPage';
 
 export type RootTabNavigationProps<
   T extends keyof RootTabParamList = 'default'

@@ -3,7 +3,7 @@ import { useTheme } from 'dooboo-ui';
 import { fbt } from 'fbt';
 import React from 'react';
 import { Icon } from 'react-native-elements';
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 
 import { withScreen } from '../../utils/wrapper';
 import {

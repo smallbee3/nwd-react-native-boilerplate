@@ -1,9 +1,9 @@
 import { RouteProp } from '@react-navigation/core';
 import { useTheme } from 'dooboo-ui';
+import { fbt } from 'fbt';
 import React from 'react';
 import { Text } from 'react-native';
 import styled from 'styled-components/native';
-import { fbt } from 'fbt';
 
 import { withScreen } from '../../utils/wrapper';
 import {

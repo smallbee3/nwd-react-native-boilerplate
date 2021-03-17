@@ -1,4 +1,4 @@
-import { ROOT_URL, fetchPost } from './common';
+import { fetchPost, ROOT_URL } from './common';
 
 export const login = async (email: string, password: string) => {
   try {
