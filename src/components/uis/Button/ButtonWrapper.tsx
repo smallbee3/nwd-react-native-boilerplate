@@ -34,6 +34,8 @@ interface Props {
   style?: ViewStyle;
   textStyle?: TextStyle;
   text?: string;
+  leftElement?: React.ReactElement;
+  rightElement?: React.ReactElement;
 }
 
 const Button: FC<Props> = ({
@@ -45,6 +47,8 @@ const Button: FC<Props> = ({
   style,
   textStyle,
   text = '',
+  leftElement,
+  rightElement,
 }) => {
   return (
     <TouchableOpacity
@@ -55,7 +59,9 @@ const Button: FC<Props> = ({
         {imgLeftSrc ? (
           <StyledImage style={imgLeftStyle} source={imgLeftSrc} />
         ) : null}
+        {leftElement || null}
         <StyledText style={textStyle}>{text}</StyledText>
+        {rightElement || null}
       </StyledButton>
     </TouchableOpacity>
   );

@@ -8,8 +8,9 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components/native';
 
 import { login } from '../../apis';
-import FACEBOOK_LOGIN from '../../assets/img/socialmedia/facebook-login.png';
-import GOOGLE_LOGIN from '../../assets/img/socialmedia/google-login.png';
+import APPLE_LOGIN from '../../assets/icons/apple.svg';
+import FACEBOOK_LOGIN from '../../assets/icons/facebook.svg';
+import GOOGLE_LOGIN from '../../assets/icons/google-color.png';
 import { userState } from '../../store/atom';
 import { withScreen } from '../../utils/wrapper';
 import {
@@ -73,7 +74,15 @@ function Page(props: Props): React.ReactElement {
           <View style={{ marginTop: 8 }} />
           <Button
             testID="btn-facebook-login"
-            imgLeftSrc={FACEBOOK_LOGIN}
+            leftElement={
+              <View
+                style={{
+                  left: 16,
+                  position: 'absolute',
+                }}>
+                <FACEBOOK_LOGIN width={24} height={24} fill={'#fff'} />
+              </View>
+            }
             text={fbt('페이스북 계정으로 로그인', '')}
             style={{ backgroundColor: '#3B5998' }}
           />
@@ -87,6 +96,15 @@ function Page(props: Props): React.ReactElement {
           <View style={{ marginTop: 8 }} />
           <Button
             testID="btn-apple-login"
+            leftElement={
+              <View
+                style={{
+                  left: 16,
+                  position: 'absolute',
+                }}>
+                <APPLE_LOGIN width={24} height={24} fill={'#000'} />
+              </View>
+            }
             text={fbt('애플 계정으로 로그인', '')}
             style={{ backgroundColor: '#fff' }}
           />

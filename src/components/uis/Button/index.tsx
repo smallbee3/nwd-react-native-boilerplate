@@ -25,6 +25,8 @@ interface Props {
   indicatorColor?: string;
   activeOpacity?: number;
   text?: string;
+  leftElement?: React.ReactElement;
+  rightElement?: React.ReactElement;
 }
 
 const Button: FC<Props> = ({
@@ -40,6 +42,8 @@ const Button: FC<Props> = ({
   indicatorColor,
   activeOpacity,
   text,
+  leftElement,
+  rightElement,
 }) => {
   if (isDisabled)
     return <ButtonDisabled style={disabledStyle} textStyle={textStyle} />;
@@ -56,6 +60,8 @@ const Button: FC<Props> = ({
       activeOpacity={activeOpacity}
       text={text}
       textStyle={textStyle}
+      leftElement={leftElement}
+      rightElement={rightElement}
     />
   );
 };
