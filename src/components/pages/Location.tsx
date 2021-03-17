@@ -171,14 +171,14 @@ function Page(props: Props): React.ReactElement {
         <FavoriteButton>
           <FavoriteButtonIconBox>
             <FavoriteButtonIcon
-              name="star"
+              name="bookmark"
               type="font-awesome-5"
               color="#fff"
               size={16}
             />
           </FavoriteButtonIconBox>
           <FavoriteButtonText>
-            {fbt('즐겨찾기 하시겠습니까?', '')}
+            {fbt('북마크에 추가하시겠습니까?', '')}
           </FavoriteButtonText>
         </FavoriteButton>
       </Favorite>

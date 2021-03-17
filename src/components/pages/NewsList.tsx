@@ -104,7 +104,7 @@ const NewsItem = styled.TouchableOpacity<{ on?: boolean }>`
   background-color: #f4f6f9;
   border-radius: 8;
   margin-top: 8;
-  height: 65;
+  height: 73;
   align-items: center;
   ${({ on }) => {
     if (on) {
@@ -122,12 +122,12 @@ const DateCard = styled.View`
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  height: 50;
-  width: 45;
+  height: 58;
+  width: 50;
   border-radius: 8;
-  margin-left: 10;
+  margin-left: 12;
   margin-right: 16;
-  shadow-color: #121217;
+  shadow-color: #6c7b8a;
   shadow-opacity: 0.1;
   shadow-radius: 20;
   elevation: 10;
@@ -143,6 +143,7 @@ const Date = styled.Text`
   top: -2;
   font-size: 22;
   font-weight: bold;
+  letter-spacing: -0.75;
 `;
 
 const Point = styled.View`
@@ -209,14 +210,14 @@ function Page(props: Props): React.ReactElement {
         <FavoriteButton>
           <FavoriteButtonIconBox>
             <FavoriteButtonIcon
-              name="star"
+              name="bookmark"
               type="font-awesome-5"
               color="#fff"
               size={16}
             />
           </FavoriteButtonIconBox>
           <FavoriteButtonText>
-            {fbt('즐겨찾기 하시겠습니까?', '')}
+            {fbt('북마크에 추가하시겠습니까?', '')}
           </FavoriteButtonText>
         </FavoriteButton>
       </Favorite>

@@ -2,16 +2,8 @@ import { RouteProp } from '@react-navigation/core';
 import { useTheme } from 'dooboo-ui';
 import { fbt } from 'fbt';
 import React, { useState } from 'react';
-import {
-  Image,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Icon, Overlay } from 'react-native-elements';
-import { ScrollView } from 'react-native-gesture-handler';
 import { useRecoilState } from 'recoil';
 import styled, { css } from 'styled-components/native';
 
@@ -194,10 +186,6 @@ const AdditionalInfoValue = styled.Text`
   color: #121217;
 `;
 
-const ManageButtonBox = styled.View`
-  width: 100%;
-`;
-
 const manageButton = css`
   display: flex;
   flex-direction: row;
@@ -207,25 +195,9 @@ const manageButton = css`
   justify-content: space-between;
 `;
 
-const ManageButton = styled.TouchableOpacity`
-  ${manageButton}
-`;
-
-const ManageBorderButton = styled.TouchableOpacity`
-  ${manageButton}
-  border-bottom-color: #F4F6F9;
-  border-bottom-width: 1;
-`;
-
 const ManageGreyButton = styled.TouchableOpacity`
   ${manageButton}
   background-color: #F4F6F9;
-`;
-
-const ManageText = styled.Text`
-  color: #121217;
-  font-size: 14;
-  margin-left: 20;
 `;
 
 const ManageGreyText = styled.Text`
@@ -254,7 +226,6 @@ function Page(props: Props): React.ReactElement {
   };
 
   const logout = () => {
-    // toggleLogoutOverlay();
     setUser(null);
   };
 
@@ -270,7 +241,11 @@ function Page(props: Props): React.ReactElement {
             {fbt('KAN에서 로그아웃 하시겠습니까?', '')}
           </OverlayTitle>
           <OverlayButtonBox>
-            <OverlayConfirmButton onPress={toggleLogoutOverlay}>
+            <OverlayConfirmButton
+              onPress={() => {
+                logout();
+                toggleLogoutOverlay();
+              }}>
               <OverlayButtonText>{fbt('확인', '')}</OverlayButtonText>
             </OverlayConfirmButton>
             <OverlayCancelButton onPress={toggleLogoutOverlay}>
@@ -354,27 +329,23 @@ function Page(props: Props): React.ReactElement {
               <AdditionalInfoValue>010-1234-5678</AdditionalInfoValue>
             </AdditionalInfo>
           </AdditionalInfoBox>
-          <ManageGreyButton>
-            <ManageBorderButton onPress={toggleLogoutOverlay}>
-              <ManageGreyText>{fbt('로그아웃', '')}</ManageGreyText>
-              <HeaderIcon
-                name="chevron-right"
-                type="font-awesome-5"
-                color="#121217"
-                size={14}
-              />
-            </ManageBorderButton>
+          <ManageGreyButton onPress={toggleLogoutOverlay}>
+            <ManageGreyText>{fbt('로그아웃', '')}</ManageGreyText>
+            <HeaderIcon
+              name="chevron-right"
+              type="font-awesome-5"
+              color="#6C7B8A"
+              size={14}
+            />
           </ManageGreyButton>
-          <ManageGreyButton>
-            <ManageButton onPress={toggleWithdrawalOverlay}>
-              <ManageGreyText>{fbt('회원 탈퇴', '')}</ManageGreyText>
-              <HeaderIcon
-                name="chevron-right"
-                type="font-awesome-5"
-                color="#121217"
-                size={14}
-              />
-            </ManageButton>
+          <ManageGreyButton onPress={toggleWithdrawalOverlay}>
+            <ManageGreyText>{fbt('회원 탈퇴', '')}</ManageGreyText>
+            <HeaderIcon
+              name="chevron-right"
+              type="font-awesome-5"
+              color="#6C7B8A"
+              size={14}
+            />
           </ManageGreyButton>
           <ManageGreyButton>
             <ManageGreyText>{fbt('서비스 이용 약관', '')}</ManageGreyText>
