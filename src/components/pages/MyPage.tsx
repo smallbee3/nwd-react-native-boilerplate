@@ -13,6 +13,7 @@ import {
 import { Icon, Overlay } from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useRecoilState } from 'recoil';
+import styled, { css } from 'styled-components/native';
 
 import { userState } from '../../store/atom';
 import { withScreen } from '../../utils/wrapper';
@@ -20,6 +21,218 @@ import {
   RootTabNavigationProps,
   RootTabParamList,
 } from '../navigations/RootStackNavigator';
+
+const Wrapper = styled.SafeAreaView`
+  width: 100%;
+  flex: 1;
+`;
+
+const OverlayContainer = styled.View`
+  align-items: center;
+`;
+
+const OverlayTitle = styled.Text`
+  margin-top: 26;
+  font-size: 14;
+  color: #121217;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+`;
+
+const OverlayButtonBox = styled.View`
+  border-top-color: #e7eaeb;
+  border-top-width: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20;
+`;
+
+const overlayButton = css`
+  background-color: #fff;
+  height: 40;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+`;
+
+const OverlayConfirmButton = styled.TouchableOpacity`
+  ${overlayButton}
+  border-right-width: 1;
+  border-right-color: #e7eaeb;
+`;
+
+const OverlayCancelButton = styled.TouchableOpacity`
+  ${overlayButton}
+`;
+
+const OverlayButtonText = styled.Text`
+  font-size: 14;
+  color: #59b58d;
+  font-weight: bold;
+`;
+
+const Header = styled.View`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  z-index: 10;
+`;
+
+const HeaderIcon = styled(Icon)`
+  margin-horizontal: 20;
+`;
+
+const HeaderText = styled.Text`
+  font-weight: bold;
+  font-size: 16;
+`;
+
+const Scroll = styled.ScrollView`
+  margin-top: 50;
+  background-color: #fff;
+  width: 100%;
+`;
+
+const Container = styled.View`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Banner = styled.View`
+  display: flex;
+  flex-direction: row;
+  background-color: #f4f6f9;
+  width: 100%;
+  padding-horizontal: 20;
+  height: 40;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const BannerText = styled.Text`
+  color: #6c7b8a;
+  font-size: 14;
+`;
+
+const ProfileImageBox = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+`;
+
+const ProfileInfo = styled.View`
+  display: flex;
+  flex-direction: row;
+  height: 70;
+  align-items: center;
+`;
+
+const ProfileImage = styled.Image`
+  width: 45;
+  height: 45;
+  border-radius: 5;
+  margin-left: 20;
+  margin-right: 20;
+`;
+
+const ProfileTextBox = styled.View`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const ProfileName = styled.Text`
+  font-size: 18;
+  font-weight: bold;
+  letter-spacing: 1;
+  color: #121217;
+  bottom: -2;
+`;
+
+const ProfileEmail = styled.Text`
+  margin-top: 3.5;
+  font-size: 15;
+  letter-spacing: 1;
+  color: #6c7b8a;
+  top: -2;
+`;
+
+const AdditionalInfoBox = styled.View`
+  width: 100%;
+`;
+
+const AdditionalInfo = styled.View`
+  display: flex;
+  flex-direction: row;
+  height: 60;
+  align-items: center;
+  border-bottom-color: #f4f6f9;
+  border-bottom-width: 1;
+`;
+
+const AdditionalInfoName = styled.Text`
+  font-size: 14;
+  color: #6c7b8a;
+  width: 30%;
+  margin-left: 20;
+`;
+
+const AdditionalInfoValue = styled.Text`
+  font-size: 14;
+  margin-right: 20;
+  color: #121217;
+`;
+
+const ManageButtonBox = styled.View`
+  width: 100%;
+`;
+
+const manageButton = css`
+  display: flex;
+  flex-direction: row;
+  height: 50;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+const ManageButton = styled.TouchableOpacity`
+  ${manageButton}
+`;
+
+const ManageBorderButton = styled.TouchableOpacity`
+  ${manageButton}
+  border-bottom-color: #F4F6F9;
+  border-bottom-width: 1;
+`;
+
+const ManageGreyButton = styled.TouchableOpacity`
+  ${manageButton}
+  background-color: #F4F6F9;
+`;
+
+const ManageText = styled.Text`
+  color: #121217;
+  font-size: 14;
+  margin-left: 20;
+`;
+
+const ManageGreyText = styled.Text`
+  color: #6c7b8a;
+  font-size: 14;
+  margin-left: 20;
+`;
 
 interface Props {
   navigation: RootTabNavigationProps<'MyPage'>;
@@ -46,188 +259,144 @@ function Page(props: Props): React.ReactElement {
   };
 
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <Wrapper>
+      {/* 로그아웃 팝업 */}
       <Overlay
         overlayStyle={styles.overlay}
         isVisible={visibleLogoutModal}
         onBackdropPress={toggleLogoutOverlay}>
-        <View style={styles.overlayContainer}>
-          <Text style={styles.overlayTitle}>
+        <OverlayContainer>
+          <OverlayTitle>
             {fbt('KAN에서 로그아웃 하시겠습니까?', '')}
-          </Text>
-          <Text style={styles.overlayDescription}></Text>
-          <View style={styles.overlayButtonBox}>
-            <TouchableOpacity
-              style={styles.overlayConfirmButton}
-              onPress={logout}>
-              <Text style={styles.overlayConfirmButtonText}>
-                {fbt('확인', '')}
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.overlayCancelButton}
-              onPress={toggleLogoutOverlay}>
-              <Text style={styles.overlayCancelButtonText}>
-                {fbt('취소', '')}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+          </OverlayTitle>
+          <OverlayButtonBox>
+            <OverlayConfirmButton onPress={toggleLogoutOverlay}>
+              <OverlayButtonText>{fbt('확인', '')}</OverlayButtonText>
+            </OverlayConfirmButton>
+            <OverlayCancelButton onPress={toggleLogoutOverlay}>
+              <OverlayButtonText>{fbt('취소', '')}</OverlayButtonText>
+            </OverlayCancelButton>
+          </OverlayButtonBox>
+        </OverlayContainer>
       </Overlay>
+
+      {/* 회원 탈퇴 팝업 */}
       <Overlay
         overlayStyle={styles.overlay}
         isVisible={visibleWithdrawalModal}
         onBackdropPress={toggleWithdrawalOverlay}>
-        <View style={styles.overlayContainer}>
-          <Text style={styles.overlayTitle}>
-            {fbt('KAN에서 탈퇴 하시겠습니까?', '')}
-          </Text>
-          <Text style={styles.overlayDescription}></Text>
-          <View style={styles.overlayButtonBox}>
-            <TouchableOpacity
-              style={styles.overlayConfirmButton}
-              onPress={toggleWithdrawalOverlay}>
-              <Text style={styles.overlayConfirmButtonText}>
-                {fbt('확인', '')}
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.overlayCancelButton}
-              onPress={toggleWithdrawalOverlay}>
-              <Text style={styles.overlayCancelButtonText}>
-                {fbt('취소', '')}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <OverlayContainer>
+          <OverlayTitle>{fbt('KAN에서 탈퇴 하시겠습니까?', '')}</OverlayTitle>
+          <OverlayButtonBox>
+            <OverlayConfirmButton onPress={toggleWithdrawalOverlay}>
+              <OverlayButtonText>{fbt('확인', '')}</OverlayButtonText>
+            </OverlayConfirmButton>
+            <OverlayCancelButton onPress={toggleWithdrawalOverlay}>
+              <OverlayButtonText>{fbt('취소', '')}</OverlayButtonText>
+            </OverlayCancelButton>
+          </OverlayButtonBox>
+        </OverlayContainer>
       </Overlay>
-      <View style={styles.header}>
-        <Icon
-          style={styles.headerIcon}
+
+      {/* 헤더 */}
+      <Header>
+        <HeaderIcon
           name="bars"
           type="font-awesome-5"
           color="#121217"
           size={14}
           // onPress={() => {}}
         />
-        <Text style={styles.headerText}>{fbt('더 보기', '')}</Text>
-        <Icon
-          style={styles.headerIcon}
-          name="cog"
-          type="font-awesome-5"
-          color="#fff"
-          size={14}
-        />
-      </View>
-      <ScrollView style={styles.scrollView}>
-        <View style={styles.container}>
-          <View style={styles.banner}>
-            <Text style={styles.bannerText}>{fbt('내 정보', '')}</Text>
-          </View>
-          <View style={styles.profileImageBox}>
-            <View style={styles.profileInfo}>
-              <Image
-                style={styles.profileImage}
+        <HeaderText>{fbt('더 보기', '')}</HeaderText>
+        <HeaderIcon name="cog" type="font-awesome-5" color="#fff" size={14} />
+      </Header>
+
+      {/* 내용 */}
+      <Scroll>
+        <Container>
+          <Banner>
+            <BannerText>{fbt('내 정보', '')}</BannerText>
+          </Banner>
+          <ProfileImageBox>
+            <ProfileInfo>
+              <ProfileImage
                 source={{
                   uri: user?.thumbnail,
                 }}
               />
-              <View style={styles.profileTextBox}>
-                <Text style={styles.profileName}>
+              <ProfileTextBox>
+                <ProfileName>
                   {user?.firstName} {user?.familyName}
-                </Text>
-                <Text style={styles.profileEmail}>{user?.email}</Text>
-              </View>
-            </View>
-          </View>
-          <View style={styles.banner}>
-            <Text style={styles.bannerText}>{fbt('추가 정보', '')}</Text>
-            <Text style={styles.bannerText}>{fbt('추가 정보 수정', '')}</Text>
-          </View>
-          <View style={styles.additionalInfoBox}>
-            <View style={styles.additionalInfo}>
-              <Text style={styles.additionalInfoName}>{fbt('소속', '')}</Text>
-              <Text style={styles.additionalInfoValue}>
-                {user?.organization}
-              </Text>
-            </View>
-            <View style={styles.additionalInfo}>
-              <Text style={styles.additionalInfoName}>
-                {fbt('연구분야', '')}
-              </Text>
-              <Text style={styles.additionalInfoValue}>{user?.jobTitle}</Text>
-            </View>
-            <View style={styles.additionalInfo}>
-              <Text style={styles.additionalInfoName}>
-                {fbt('홈페이지', '')}
-              </Text>
-              <Text style={styles.additionalInfoValue}>
-                www.networkdefines.com
-              </Text>
-            </View>
-            <View style={styles.additionalInfo}>
-              <Text style={styles.additionalInfoName}>{fbt('연락처', '')}</Text>
-              <Text style={styles.additionalInfoValue}>010-1234-5678</Text>
-            </View>
-          </View>
-          <View style={styles.banner}>
-            <Text style={styles.bannerText}>{fbt('계정 관리', '')}</Text>
-          </View>
-          <View style={styles.overlayButton}>
-            <TouchableOpacity
-              style={styles.manageBorder}
-              onPress={toggleLogoutOverlay}>
-              <Text style={styles.manageText}>{fbt('로그아웃', '')}</Text>
-              <Icon
-                style={styles.headerIcon}
+                </ProfileName>
+                <ProfileEmail>{user?.email}</ProfileEmail>
+              </ProfileTextBox>
+            </ProfileInfo>
+          </ProfileImageBox>
+          <Banner>
+            <BannerText>{fbt('추가 정보', '')}</BannerText>
+            <BannerText>{fbt('추가 정보 수정', '')}</BannerText>
+          </Banner>
+          <AdditionalInfoBox>
+            <AdditionalInfo>
+              <AdditionalInfoName>{fbt('소속', '')}</AdditionalInfoName>
+              <AdditionalInfoValue>{user?.organization}</AdditionalInfoValue>
+            </AdditionalInfo>
+            <AdditionalInfo>
+              <AdditionalInfoName>{fbt('연구분야', '')}</AdditionalInfoName>
+              <AdditionalInfoValue>{user?.jobTitle}</AdditionalInfoValue>
+            </AdditionalInfo>
+            <AdditionalInfo>
+              <AdditionalInfoName>{fbt('홈페이지', '')}</AdditionalInfoName>
+              <AdditionalInfoValue>www.networkdefines.com</AdditionalInfoValue>
+            </AdditionalInfo>
+            <AdditionalInfo>
+              <AdditionalInfoName>{fbt('연락처', '')}</AdditionalInfoName>
+              <AdditionalInfoValue>010-1234-5678</AdditionalInfoValue>
+            </AdditionalInfo>
+          </AdditionalInfoBox>
+          <ManageGreyButton>
+            <ManageBorderButton onPress={toggleLogoutOverlay}>
+              <ManageGreyText>{fbt('로그아웃', '')}</ManageGreyText>
+              <HeaderIcon
                 name="chevron-right"
                 type="font-awesome-5"
                 color="#121217"
                 size={14}
               />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.overlayButton}>
-            <TouchableOpacity
-              style={styles.manage}
-              onPress={toggleWithdrawalOverlay}>
-              <Text style={styles.manageText}>{fbt('회원 탈퇴', '')}</Text>
-              <Icon
-                style={styles.headerIcon}
+            </ManageBorderButton>
+          </ManageGreyButton>
+          <ManageGreyButton>
+            <ManageButton onPress={toggleWithdrawalOverlay}>
+              <ManageGreyText>{fbt('회원 탈퇴', '')}</ManageGreyText>
+              <HeaderIcon
                 name="chevron-right"
                 type="font-awesome-5"
                 color="#121217"
                 size={14}
               />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.manageGrey}>
-            <Text style={styles.manageGreyText}>
-              {fbt('서비스 이용 약관', '')}
-            </Text>
-            <Icon
-              style={styles.headerIcon}
+            </ManageButton>
+          </ManageGreyButton>
+          <ManageGreyButton>
+            <ManageGreyText>{fbt('서비스 이용 약관', '')}</ManageGreyText>
+            <HeaderIcon
               name="chevron-right"
               type="font-awesome-5"
               color="#6C7B8A"
               size={14}
             />
-          </View>
-          <View style={styles.manageGrey}>
-            <Text style={styles.manageGreyText}>
-              {fbt('개인정보 처리 방침', '')}
-            </Text>
-            <Icon
-              style={styles.headerIcon}
+          </ManageGreyButton>
+          <ManageGreyButton>
+            <ManageGreyText>{fbt('개인정보 처리 방침', '')}</ManageGreyText>
+            <HeaderIcon
               name="chevron-right"
               type="font-awesome-5"
               color="#6C7B8A"
               size={14}
             />
-          </View>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+          </ManageGreyButton>
+        </Container>
+      </Scroll>
+    </Wrapper>
   );
 }
 
@@ -238,203 +407,6 @@ const styles = StyleSheet.create({
     width: '80%',
     padding: 0,
     overflow: 'hidden',
-  },
-  overlayContainer: {
-    alignItems: 'center',
-  },
-  overlayTitle: {
-    marginTop: 26,
-    fontSize: 11,
-    color: '#121217',
-    width: '100%',
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  overlayDescription: {
-    marginTop: 5,
-    fontSize: 9,
-    color: '#6C7B8A',
-  },
-  overlayButtonBox: {
-    borderTopColor: '#E7EAEB',
-    borderTopWidth: 1,
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    marginTop: 20,
-  },
-  overlayConfirmButton: {
-    backgroundColor: '#fff',
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '50%',
-    borderRightWidth: 1,
-    borderRightColor: '#E7EAEB',
-  },
-  overlayConfirmButtonText: {
-    fontSize: 11,
-    color: '#59B58D',
-    fontWeight: 'bold',
-  },
-  overlayCancelButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '50%',
-  },
-  overlayCancelButtonText: {
-    fontSize: 11,
-    color: '#59B58D',
-    fontWeight: 'bold',
-  },
-  wrapper: {
-    width: '100%',
-  },
-  header: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: 50,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-  },
-  headerIcon: {
-    marginHorizontal: 25,
-  },
-  headerText: {
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  scrollView: {
-    marginTop: 50,
-    backgroundColor: '#fff',
-    width: '100%',
-  },
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  banner: {
-    display: 'flex',
-    flexDirection: 'row',
-    backgroundColor: '#F4F6F9',
-    width: '100%',
-    paddingHorizontal: 25,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  bannerText: {
-    color: '#6C7B8A',
-    fontSize: 11,
-  },
-  profileImageBox: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
-  },
-  profileInfo: {
-    display: 'flex',
-    flexDirection: 'row',
-    height: 70,
-    alignItems: 'center',
-  },
-  profileImage: {
-    width: 45,
-    height: 45,
-    borderRadius: 5,
-    marginLeft: 20,
-    marginRight: 20,
-  },
-  profileTextBox: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  profileName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-    color: '#121217',
-    bottom: -2,
-  },
-  profileEmail: {
-    marginTop: 3.5,
-    fontSize: 15,
-    letterSpacing: 1,
-    color: '#6C7B8A',
-    top: -2,
-  },
-  additionalInfoBox: {
-    width: '100%',
-  },
-  additionalInfo: {
-    display: 'flex',
-    flexDirection: 'row',
-    height: 60,
-    alignItems: 'center',
-    borderBottomColor: '#F4F6F9',
-    borderBottomWidth: 1,
-  },
-  additionalInfoName: {
-    fontSize: 11,
-    color: '#6C7B8A',
-    width: '30%',
-    marginLeft: 20,
-  },
-  additionalInfoValue: {
-    fontSize: 14,
-    marginRight: 20,
-    color: '#121217',
-  },
-  overlayButton: {
-    width: '100%',
-  },
-  manage: {
-    display: 'flex',
-    flexDirection: 'row',
-    height: 50,
-    alignItems: 'center',
-    width: '100%',
-    justifyContent: 'space-between',
-  },
-  manageBorder: {
-    display: 'flex',
-    flexDirection: 'row',
-    height: 50,
-    alignItems: 'center',
-    width: '100%',
-    borderBottomColor: '#F4F6F9',
-    borderBottomWidth: 1,
-    justifyContent: 'space-between',
-  },
-  manageGrey: {
-    display: 'flex',
-    flexDirection: 'row',
-    height: 50,
-    alignItems: 'center',
-    width: '100%',
-    backgroundColor: '#F4F6F9',
-    justifyContent: 'space-between',
-  },
-  manageIcon: {
-    marginLeft: 24,
-  },
-  manageText: {
-    color: '#121217',
-    fontSize: 14,
-    marginLeft: 15,
-  },
-  manageGreyText: {
-    color: '#6C7B8A',
-    fontSize: 14,
-    marginLeft: 15,
   },
 });
 
