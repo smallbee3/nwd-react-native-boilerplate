@@ -59,18 +59,22 @@ const Favorite = styled.View`
   justify-content: center;
 `;
 
-const TabBox = styled.View`
+const TabBox = styled.ScrollView`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   background-color: #f4f6f9;
-  padding-horizontal: 5%;
+`;
+
+const Slider = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   padding-vertical: 10;
 `;
 
-const Tab = styled.View<{ on?: boolean }>`
+const Tab = styled.TouchableOpacity<{ on?: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -79,6 +83,7 @@ const Tab = styled.View<{ on?: boolean }>`
   height: 30;
   width: 110;
   border-radius: 7;
+  margin-horizontal: 10;
   ${({ on }) => {
     if (on) {
       return css`
@@ -90,6 +95,10 @@ const Tab = styled.View<{ on?: boolean }>`
       `;
     }
   }}
+`;
+
+const TabButton = styled.TouchableOpacity`
+  width: 100%;
 `;
 
 const TabText = styled.Text`
@@ -314,16 +323,33 @@ function Page(props: Props): React.ReactElement {
           </FavoriteButtonText>
         </FavoriteButton>
       </Favorite>
-      <TabBox>
-        <Tab>
-          <TabText>목련관</TabText>
-        </Tab>
-        <Tab on>
-          <TabText>동백관</TabText>
-        </Tab>
-        <Tab>
-          <TabText>백합관</TabText>
-        </Tab>
+      <TabBox horizontal={true} showsHorizontalScrollIndicator={false}>
+        <Slider>
+          <Tab>
+            <TabText>목련관</TabText>
+          </Tab>
+          <Tab on>
+            <TabText>동백관</TabText>
+          </Tab>
+          <Tab>
+            <TabText>샘플관</TabText>
+          </Tab>
+          <Tab>
+            <TabText>샘플관</TabText>
+          </Tab>
+          <Tab>
+            <TabText>샘플관</TabText>
+          </Tab>
+          <Tab>
+            <TabText>샘플관</TabText>
+          </Tab>
+          <Tab>
+            <TabText>샘플관</TabText>
+          </Tab>
+          <Tab on>
+            <TabText>샘플관</TabText>
+          </Tab>
+        </Slider>
       </TabBox>
       <Scroll>
         <Container>
