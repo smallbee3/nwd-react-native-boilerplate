@@ -56,7 +56,6 @@ const Page = ({ navigation, route }: Props) => {
           onPress={() => navigation.goBack()}
         />
         <HeaderText>개인정보 처리방침</HeaderText>
-        <HeaderIcon name="cog" type="font-awesome-5" color="#fff" size={14} />
       </Header>
       <Scroll style={{ padding: 10 }}>
         <ContentText>

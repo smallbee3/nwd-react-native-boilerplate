@@ -2,8 +2,9 @@ import { RouteProp } from '@react-navigation/core';
 import { useTheme } from 'dooboo-ui';
 import { fbt } from 'fbt';
 import React from 'react';
+import { View } from 'react-native';
 import { Icon } from 'react-native-elements';
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 
 import { withScreen } from '../../utils/wrapper';
 import {
@@ -19,17 +20,13 @@ const Wrapper = styled.SafeAreaView`
 const Header = styled.View`
   width: 100%;
   height: 50;
-  display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #ffffff;
 `;
 
-const HeaderIcon = styled(Icon)`
-  margin-left: 25;
-  margin-right: 25;
-`;
+const HeaderIcon = styled(Icon)``;
 
 const HeaderText = styled.Text`
   font-weight: bold;
@@ -139,20 +136,32 @@ function Page(props: Props): React.ReactElement {
   return (
     <Wrapper>
       <Header>
-        <HeaderIcon
-          name="bars"
-          type="font-awesome-5"
-          color="#121217"
-          size={20}
-          // onPress={() => {}}
-        />
+        <View
+          style={{
+            left: 25,
+            position: 'absolute',
+          }}>
+          <HeaderIcon
+            name="bars"
+            type="font-awesome-5"
+            color="#121217"
+            size={20}
+            // onPress={() => {}}
+          />
+        </View>
         <HeaderText>2020 하계 학술대회</HeaderText>
-        <HeaderIcon
-          name="star"
-          type="font-awesome-5"
-          color="#121217"
-          size={20}
-        />
+        <View
+          style={{
+            right: 25,
+            position: 'absolute',
+          }}>
+          <HeaderIcon
+            name="star"
+            type="font-awesome-5"
+            color="#121217"
+            size={20}
+          />
+        </View>
       </Header>
       <Logo>
         <LogoImage

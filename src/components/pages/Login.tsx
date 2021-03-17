@@ -2,8 +2,7 @@ import { RouteProp } from '@react-navigation/core';
 import { useTheme } from 'dooboo-ui';
 import { fbt } from 'fbt';
 import React from 'react';
-import { View } from 'react-native';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components/native';
 

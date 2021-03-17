@@ -2,6 +2,7 @@ import { RouteProp } from '@react-navigation/core';
 import { useTheme } from 'dooboo-ui';
 import { fbt } from 'fbt';
 import React from 'react';
+import { View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import styled, { css } from 'styled-components/native';
 
@@ -18,18 +19,14 @@ const Wrapper = styled.SafeAreaView`
 
 const Header = styled.View`
   width: 100%;
-  height: 50;
-  display: flex;
+  height: 50px;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #ffffff;
 `;
 
-const HeaderIcon = styled(Icon)`
-  margin-left: 25;
-  margin-right: 25;
-`;
+const HeaderIcon = styled(Icon)``;
 
 const HeaderText = styled.Text`
   font-weight: bold;
@@ -66,6 +63,7 @@ const FavoriteButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 `;
+
 const FavoriteButtonIconBox = styled.View`
   position: absolute;
   left: 16;
@@ -170,28 +168,26 @@ interface Props {
   route: RouteProp<RootStackParamList, 'NewsList'>;
 }
 
-function Page(props: Props): React.ReactElement {
+function Page({ navigation }: Props): React.ReactElement {
   const { theme } = useTheme();
-
-  const {
-    // route: {
-    //   params: {param},
-    // },
-    navigation,
-  } = props;
 
   return (
     <Wrapper>
       <Header>
-        <HeaderIcon
-          name="bars"
-          type="font-awesome-5"
-          color="#121217"
-          size={20}
-          // onPress={() => {}}
-        />
+        <View
+          style={{
+            left: 25,
+            position: 'absolute',
+          }}>
+          <HeaderIcon
+            name="bars"
+            type="font-awesome-5"
+            color="#121217"
+            size={20}
+            // onPress={() => {}}
+          />
+        </View>
         <HeaderText>2020 하계 학술대회</HeaderText>
-        <HeaderIcon name="cog" type="font-awesome-5" color="#fff" size={14} />
       </Header>
       <Logo>
         <LogoImage

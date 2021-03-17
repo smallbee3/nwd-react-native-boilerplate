@@ -2,7 +2,7 @@ import { RouteProp } from '@react-navigation/core';
 import { useTheme } from 'dooboo-ui';
 import { fbt } from 'fbt';
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Icon, Overlay } from 'react-native-elements';
 import { useRecoilState } from 'recoil';
 import styled, { css } from 'styled-components/native';
@@ -70,15 +70,13 @@ const Header = styled.View`
   height: 50;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #ffffff;
   z-index: 10;
 `;
 
-const HeaderIcon = styled(Icon)`
-  margin-horizontal: 20;
-`;
+const HeaderIcon = styled(Icon)``;
 
 const HeaderText = styled.Text`
   font-weight: bold;
@@ -270,15 +268,20 @@ function Page({ navigation, route }: Props): React.ReactElement {
 
       {/* 헤더 */}
       <Header>
-        <HeaderIcon
-          name="bars"
-          type="font-awesome-5"
-          color="#121217"
-          size={20}
-          // onPress={() => {}}
-        />
+        <View
+          style={{
+            left: 25,
+            position: 'absolute',
+          }}>
+          <HeaderIcon
+            name="bars"
+            type="font-awesome-5"
+            color="#121217"
+            size={20}
+            // onPress={() => {}}
+          />
+        </View>
         <HeaderText>{fbt('더 보기', '')}</HeaderText>
-        <HeaderIcon name="cog" type="font-awesome-5" color="#fff" size={14} />
       </Header>
 
       {/* 내용 */}
