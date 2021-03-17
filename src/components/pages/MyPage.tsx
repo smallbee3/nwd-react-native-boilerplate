@@ -16,7 +16,7 @@ import {
 
 const Wrapper = styled.SafeAreaView`
   width: 100%;
-  flex: 1;
+  flex: 100%;
 `;
 
 const OverlayContainer = styled.View`
@@ -206,7 +206,7 @@ interface Props {
   route: RouteProp<RootTabParamList, 'MyPage'>;
 }
 
-function Page(props: Props): React.ReactElement {
+function Page({ navigation, route }: Props): React.ReactElement {
   const { theme } = useTheme();
   const [user, setUser] = useRecoilState(userState);
   const [visibleLogoutModal, setVisibleLogoutModal] = useState(false);
@@ -274,7 +274,7 @@ function Page(props: Props): React.ReactElement {
           name="bars"
           type="font-awesome-5"
           color="#121217"
-          size={14}
+          size={20}
           // onPress={() => {}}
         />
         <HeaderText>{fbt('더 보기', '')}</HeaderText>
@@ -342,7 +342,7 @@ function Page(props: Props): React.ReactElement {
               size={14}
             />
           </ManageGreyButton>
-          <ManageGreyButton>
+          <ManageGreyButton onPress={() => navigation.navigate('MyPageTerms')}>
             <ManageGreyText>{fbt('서비스 이용 약관', '')}</ManageGreyText>
             <HeaderIcon
               name="chevron-right"
@@ -351,7 +351,8 @@ function Page(props: Props): React.ReactElement {
               size={14}
             />
           </ManageGreyButton>
-          <ManageGreyButton>
+          <ManageGreyButton
+            onPress={() => navigation.navigate('MyPagePrivacy')}>
             <ManageGreyText>{fbt('개인정보 처리 방침', '')}</ManageGreyText>
             <HeaderIcon
               name="chevron-right"

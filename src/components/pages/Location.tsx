@@ -143,7 +143,7 @@ function Page(props: Props): React.ReactElement {
           name="bars"
           type="font-awesome-5"
           color="#121217"
-          size={14}
+          size={20}
           // onPress={() => {}}
         />
         <HeaderText>2020 하계 학술대회</HeaderText>
@@ -151,7 +151,7 @@ function Page(props: Props): React.ReactElement {
           name="star"
           type="font-awesome-5"
           color="#121217"
-          size={14}
+          size={20}
         />
       </Header>
       <Logo>

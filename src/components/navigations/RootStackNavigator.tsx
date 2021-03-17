@@ -31,6 +31,9 @@ export interface RootStackParamList {
   ProgramDetail: undefined;
   NewsList: undefined;
   NewsDetail: undefined;
+  MyPage: undefined;
+  MyPageTerms: undefined;
+  MyPagePrivacy: undefined;
 }
 import { userState } from '../../store/atom';
 import ConfDetail from '../pages/ConfDetail';
@@ -59,10 +62,12 @@ export interface RootTabParamList {
   ProgramNavi: undefined;
   Location: undefined;
   NewsNavi: undefined;
-  MyPage: undefined;
+  MyPageNavi: undefined;
 }
 import Location from '../pages/Location';
 import MyPage from '../pages/MyPage';
+import MyPagePrivacy from '../pages/MyPagePrivacy';
+import MyPageTerms from '../pages/MyPageTerms';
 
 export type RootTabNavigationProps<
   T extends keyof RootTabParamList = 'default'
@@ -107,6 +112,18 @@ function RootNavigator(): React.ReactElement {
         screenOptions={{ headerShown: false }}>
         <Stack.Screen name="NewsList" component={NewsList} />
         <Stack.Screen name="NewsDetail" component={NewsDetail} />
+      </Stack.Navigator>
+    );
+  };
+
+  const MyPageNavi = () => {
+    return (
+      <Stack.Navigator
+        initialRouteName={'MyPage'}
+        screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="MyPage" component={MyPage} />
+        <Stack.Screen name="MyPageTerms" component={MyPageTerms} />
+        <Stack.Screen name="MyPagePrivacy" component={MyPagePrivacy} />
       </Stack.Navigator>
     );
   };
@@ -168,8 +185,8 @@ function RootNavigator(): React.ReactElement {
             }}
           />
           <Tab.Screen
-            name="MyPage"
-            component={MyPage}
+            name="MyPageNavi"
+            component={MyPageNavi}
             options={{
               tabBarLabel: () => <Text>{fbt('더 보기', '')}</Text>,
               tabBarIcon: () => (
