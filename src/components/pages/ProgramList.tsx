@@ -17,9 +17,6 @@ const Wrapper = styled.SafeAreaView`
 `;
 
 const Header = styled.View`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 50;
   display: flex;
@@ -40,7 +37,6 @@ const HeaderText = styled.Text`
 `;
 
 const Logo = styled.View`
-  margin-top: 50;
   display: flex;
   flex-direction: column;
   height: 60;

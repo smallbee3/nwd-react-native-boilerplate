@@ -76,7 +76,9 @@ function RootNavigator(): React.ReactElement {
 
   const ConfNavi = () => {
     return (
-      <Stack.Navigator initialRouteName={'ConfDetail'}>
+      <Stack.Navigator
+        initialRouteName={'ConfDetail'}
+        screenOptions={{ headerShown: false }}>
         <Stack.Screen name="ConfDetail" component={ConfDetail} />
         <Stack.Screen name="ConfList" component={ConfList} />
         <Stack.Screen name="ConfIntro" component={ConfIntro} />
@@ -89,7 +91,9 @@ function RootNavigator(): React.ReactElement {
 
   const ProgramNavi = () => {
     return (
-      <Stack.Navigator initialRouteName={'ProgramList'}>
+      <Stack.Navigator
+        initialRouteName={'ProgramList'}
+        screenOptions={{ headerShown: false }}>
         <Stack.Screen name="ProgramList" component={ProgramList} />
         <Stack.Screen name="ProgramDetail" component={ProgramDetail} />
       </Stack.Navigator>
@@ -98,7 +102,9 @@ function RootNavigator(): React.ReactElement {
 
   const NewsNavi = () => {
     return (
-      <Stack.Navigator initialRouteName={'NewsList'}>
+      <Stack.Navigator
+        initialRouteName={'NewsList'}
+        screenOptions={{ headerShown: false }}>
         <Stack.Screen name="NewsList" component={NewsList} />
         <Stack.Screen name="NewsDetail" component={NewsDetail} />
       </Stack.Navigator>
